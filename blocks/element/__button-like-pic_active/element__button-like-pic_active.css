@@ -1,0 +1,5 @@
+.element__button-like-pic_active,
+.element__button-like-pic_active::before,
+.element__button-like-pic_active::after {
+  background-color: black;
+}
