@@ -5,6 +5,7 @@
 @import url(../blocks/page/page.css);
 
 @import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/link/link.css);
 @import url(../blocks/link/__theme_dark/link__theme_dark.css);
