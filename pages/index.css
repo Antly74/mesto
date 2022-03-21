@@ -9,9 +9,9 @@
 @import url(../blocks/header/__text/header__text.css);
 
 @import url(../blocks/link/link.css);
-@import url(../blocks/link/__theme_dark/link__theme_dark.css);
-@import url(../blocks/link/__theme_light/link__theme_light.css);
-@import url(../blocks/link/__theme_medium-dark/link__theme_medium-dark.css);
+@import url(../blocks/link/_theme/link_theme_dark.css);
+@import url(../blocks/link/_theme/link_theme_light.css);
+@import url(../blocks/link/_theme/link_theme_medium-dark.css);
 
 @import url(../blocks/content/content.css);
 
