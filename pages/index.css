@@ -20,9 +20,7 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__desc/profile__desc.css);
 @import url(../blocks/profile/__edit/profile__edit.css);
-@import url(../blocks/profile/__edit-icon/profile__edit-icon.css);
 @import url(../blocks/profile/__add/profile__add.css);
-@import url(../blocks/profile/__add-icon/profile__add-icon.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
@@ -30,8 +28,7 @@
 @import url(../blocks/element/__caption/element__caption.css);
 @import url(../blocks/element/__caption-text/element__caption-text.css);
 @import url(../blocks/element/__button-like/element__button-like.css);
-@import url(../blocks/element/__button-like-pic/element__button-like-pic.css);
-@import url(../blocks/element/__button-like-pic_active/element__button-like-pic_active.css);
+@import url(../blocks/element/__button-like_active/element__button-like_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);
@@ -43,4 +40,3 @@
 @import url(../blocks/edit-form/__item/edit-form__item.css);
 @import url(../blocks/edit-form/__save-button/edit-form__save-button.css);
 @import url(../blocks/edit-form/__close-button/edit-form__close-button.css);
-@import url(../blocks/edit-form/__close-button-icon/edit-form__close-button-icon.css);

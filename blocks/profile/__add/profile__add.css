@@ -9,9 +9,31 @@
   justify-self: flex-end;
   align-self: center;
   grid-area: add;
+  position: relative;
 }
 @media (max-width: 640px) {
   .profile__add {
     width: 100%;
   }
+}
+
+.profile__add::before {
+  content: "";
+  width: 20px;
+  height: 0px;
+  border: solid 1px white;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 10px);
+}
+.profile__add::after {
+  content: "";
+  width: 0px;
+  height: 20px;
+  border: solid 1px white;
+  background-color: white;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 50%;
 }

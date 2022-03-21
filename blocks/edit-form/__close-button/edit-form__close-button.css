@@ -4,12 +4,37 @@
   border: none;
   background-color: transparent;
   position: absolute;
-  top: -44px;
-  right: -40px;
+  top: -26px;
+  right: -46px;
   cursor: pointer;
 }
+.edit-form__close-button::before,
+.edit-form__close-button::after {
+  content: "";
+  width: 34px;
+  height: 0px;
+  border: solid 2px white;
+  background-color: white;
+  position: absolute;
+  transform: rotate(45deg);
+  top: 0px;
+  left: 0px;
+}
+.edit-form__close-button::after {
+  top: -19px;
+  left: 15px;
+  transform: rotate(-45deg);
+  top: 0px;
+  left: 0px;
+}
+
 @media (max-width: 640px) {
   .edit-form__close-button {
-    right: -12px;
+    top: -28px;
+    right: -16px;
+  }
+  .edit-form__close-button::before,
+  .edit-form__close-button::after {
+    width: 20px;
   }
 }

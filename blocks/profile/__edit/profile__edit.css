@@ -8,6 +8,7 @@
   margin: 0px 20px 7px 20px;
   align-self: end;
   grid-area: edit;
+  background: url(../../../images/Edit.svg) no-repeat center;
 }
 @media (max-width: 640px) {
   .profile__edit {
