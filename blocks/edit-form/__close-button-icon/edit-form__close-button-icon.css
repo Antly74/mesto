@@ -1,0 +1,28 @@
+.edit-form__close-button-icon {
+  width: 34px;
+  height: 0px;
+  border: solid 2px white;
+  background-color: white;
+  position: relative;
+  transform: rotate(45deg);
+}
+.edit-form__close-button-icon::before {
+  content: "";
+  width: 0px;
+  height: 34px;
+  border: solid 2px white;
+  background-color: white;
+  position: absolute;
+  top: -19px;
+  left: 15px;
+}
+@media (max-width: 640px) {
+  .edit-form__close-button-icon {
+    width: 20px;
+  }
+  .edit-form__close-button-icon::before {
+    height: 20px;
+    top: -12px;
+    left: 8px;
+  }
+}

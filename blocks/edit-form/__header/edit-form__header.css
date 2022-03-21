@@ -1,0 +1,15 @@
+.edit-form__header {
+  width: calc(100% - 36px*2);
+  margin: 34px 0 43px;
+  padding: 0;
+  font-size: 24px;
+  line-height: 1.21;
+  font-weight: 900;
+}
+@media (max-width: 640px) {
+  .edit-form__header {
+    font-size: 18px;
+    width: calc(100% - 22px*2);
+    margin: 25px 0 70px;
+  }
+}

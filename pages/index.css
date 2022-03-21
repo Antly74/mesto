@@ -11,6 +11,7 @@
 @import url(../blocks/link/link.css);
 @import url(../blocks/link/__theme_dark/link__theme_dark.css);
 @import url(../blocks/link/__theme_light/link__theme_light.css);
+@import url(../blocks/link/__theme_medium-dark/link__theme_medium-dark.css);
 
 @import url(../blocks/content/content.css);
 
@@ -34,3 +35,12 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);
+
+@import url(../blocks/edit-form/edit-form.css);
+@import url(../blocks/edit-form/_opened/edit-form_opened.css);
+@import url(../blocks/edit-form/__window/edit-form__window.css);
+@import url(../blocks/edit-form/__header/edit-form__header.css);
+@import url(../blocks/edit-form/__item/edit-form__item.css);
+@import url(../blocks/edit-form/__save-button/edit-form__save-button.css);
+@import url(../blocks/edit-form/__close-button/edit-form__close-button.css);
+@import url(../blocks/edit-form/__close-button-icon/edit-form__close-button-icon.css);

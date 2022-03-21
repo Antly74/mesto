@@ -1,0 +1,19 @@
+.edit-form__save-button {
+  background-color: black;
+  border: solid 2px black;
+  border-radius: 2px;
+  width: calc(100% - 36px*2);
+  color: white;
+  height: 50px;
+  margin: 23px 0 37px;
+  font-size: 18px;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .edit-form__save-button {
+    width: calc(100% - 22px*2);
+    height: 46px;
+    font-size: 14px;
+    margin: 20px 0 24px;
+  }
+}
