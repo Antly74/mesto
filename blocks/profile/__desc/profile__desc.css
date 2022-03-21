@@ -1,0 +1,16 @@
+.profile__desc {
+  margin: 10px 0 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  grid-area: desc;
+}
+@media (max-width: 640px) {
+  .profile__desc {
+    justify-self: center;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+}
