@@ -21,8 +21,6 @@
   left: 0px;
 }
 .edit-form__close-button::after {
-  top: -19px;
-  left: 15px;
   transform: rotate(-45deg);
   top: 0px;
   left: 0px;
