@@ -10,30 +10,35 @@
   align-self: center;
   grid-area: add;
   position: relative;
+  --size: 22px
 }
-@media (max-width: 640px) {
-  .profile__add {
-    width: 100%;
-  }
+.profile__add:hover{
+  opacity: 0.6;
 }
-
 .profile__add::before {
   content: "";
-  width: 20px;
+  width: var(--size);
   height: 0px;
   border: solid 1px white;
   background-color: white;
   position: absolute;
   top: 50%;
-  left: calc(50% - 10px);
+  left: calc(50% - var(--size)/2);
 }
 .profile__add::after {
   content: "";
   width: 0px;
-  height: 20px;
+  height: var(--size);
   border: solid 1px white;
   background-color: white;
   position: absolute;
-  top: calc(50% - 10px);
+  top: calc(50% - var(--size)/2);
   left: 50%;
+}
+
+@media (max-width: 640px) {
+  .profile__add {
+    width: 100%;
+    --size: 16px;
+  }
 }

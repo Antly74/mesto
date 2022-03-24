@@ -1,11 +1,8 @@
-.edit-form__window {
+.popup__window {
   max-width: 430px;
   width: 100%;
   background-color: white;
   margin: 19px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border-radius: 8px;
   position: relative;
 }

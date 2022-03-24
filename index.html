@@ -9,70 +9,64 @@
 <body>
   <div class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="Место" class="header__logo">
-      <h1 class="header__text">Место</h1>
+      <a href="#" class="header__link link">
+        <img src="./images/logo.svg" alt="Место" class="header__logo">
+      </a>
     </header>
 
     <main class="content">
 
       <section class="profile">
         <img src="./images/Okorokov.jpg" alt="Аватар" class="profile__avatar">
-        <h2 class="profile__name">Анатолий Око</h2>
+        <h1 class="profile__name">Анатолий Око</h1>
         <p class="profile__desc">Путешественник по Москве</p>
-        <button class="profile__edit link link_theme_dark"></button>
-        <button class="profile__add link link_theme_dark"></button>
+        <button aria-label="Редактировать" type="button" class="profile__edit link"></button>
+        <button aria-label="Добавить" type="button" class="profile__add link"></button>
       </section>
 
       <section class="elements">
-        <figure class="element">
+        <article class="element">
           <img src="./images/elements/Akteon_Tretyakov_Gallery.jpg" alt="Актеон Третьяковская галерея" class="element__image">
-          <figcaption class="element__caption">
-            <p class="element__caption-text">Актеон Третьяковская галерея</p>
-            <button class="element__button-like element__button-like_active link link_theme_light"></button>
-          </figcaption>
-        </figure>
-        <figure class="element">
+          <div class="element__caption">
+            <h2 class="element__caption-text">Актеон Третьяковская галерея</h2>
+            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+          </div>
+        </article>
+        <article class="element">
           <img src="./images/elements/Assumption_Cathedral.jpg" alt="Успенский собор" class="element__image">
-          <figcaption class="element__caption">
-            <p class="element__caption-text">Успенский собор</p>
-            <button class="element__button-like link link_theme_light"></button>
-          </figcaption>
-        </figure>
-        <figure class="element">
+          <div class="element__caption">
+            <h2 class="element__caption-text">Успенский собор</h2>
+            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+          </div>
+        </article>
+        <article class="element">
           <img src="./images/elements/eternal_flame.jpg" alt="Могила неизвестному солдату" class="element__image">
-          <figcaption class="element__caption">
-            <p class="element__caption-text">Могила неизвестному солдату</p>
-            <button class="element__button-like link link_theme_light"></button>
-          </figcaption>
-        </figure>
-        <figure class="element">
+          <div class="element__caption">
+            <h2 class="element__caption-text">Могила неизвестному солдату</h2>
+            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+          </div>
+        </article>
+        <article class="element">
             <img src="./images/elements/Kolomna_kremlin_wall.jpg" alt="Коломна, Кремлевская стена" class="element__image">
-            <figcaption class="element__caption">
-              <p class="element__caption-text">Коломна, Кремлевская стена</p>
-              <button class="element__button-like link link_theme_light"></button>
-            </figcaption>
-        </figure>
-        <figure class="element">
+            <div class="element__caption">
+              <h2 class="element__caption-text">Коломна, Кремлевская стена</h2>
+              <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+            </div>
+        </article>
+        <article class="element">
           <img src="./images/elements/Moskva_city.jpg" alt="Москва Сити" class="element__image">
-          <figcaption class="element__caption">
-            <p class="element__caption-text">Москва Сити</p>
-            <button class="element__button-like link link_theme_light"></button>
-          </figcaption>
-        </figure>
-        <figure class="element">
+          <div class="element__caption">
+            <h2 class="element__caption-text">Москва Сити</h2>
+            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+          </div>
+        </article>
+        <article class="element">
           <img src="./images/elements/VDNH.jpg" alt="ВДНХ" class="element__image">
-          <figcaption class="element__caption">
-            <p class="element__caption-text">ВДНХ</p>
-            <button class="element__button-like link link_theme_light"></button>
-          </figcaption>
-        </figure>
-        <figure class="element">
-          <img src="./images/elements/Moskva_river.jpg" alt="река Москва" class="element__image">
-          <figcaption class="element__caption">
-            <p class="element__caption-text">река Москва</p>
-            <button class="element__button-like link link_theme_light"></button>
-          </figcaption>
-        </figure>
+          <div class="element__caption">
+            <h2 class="element__caption-text">ВДНХ</h2>
+            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+          </div>
+        </article>
       </section>
 
     </main>
@@ -82,13 +76,15 @@
     </footer>
   </div>
 
-  <div class="edit-form">
-    <div class="edit-form__window">
-      <h2 class="edit-form__header">Редактировать профиль</h2>
-      <input type="text" class="edit-form__item" id="name" name="name" required>
-      <input type="text" class="edit-form__item" id="desc" name="desc" required>
-      <button class="edit-form__save-button link link_theme_medium-dark">Сохранить</button>
-      <button class="edit-form__close-button link link_theme_dark"></button>
+  <div class="popup">
+    <div class="popup__window">
+      <h2 class="popup__header">Редактировать профиль</h2>
+      <form action="" class="popup__form">
+        <input type="text" class="popup__item popup__item_type_name" id="name" name="name" required>
+        <input type="text" class="popup__item popup__item_type_desc" id="desc" name="desc" required>
+        <button aria-label="Сохранить" type="submit" class="popup__save-button link">Сохранить</button>
+        <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
+      </form>
     </div>
   </div>
 
