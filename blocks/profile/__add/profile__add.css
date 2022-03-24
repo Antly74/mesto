@@ -10,7 +10,7 @@
   align-self: center;
   grid-area: add;
   position: relative;
-  --size: 22px
+  --size: 22px;
 }
 .profile__add:hover{
   opacity: 0.6;
