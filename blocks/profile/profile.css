@@ -12,7 +12,7 @@
 @media (max-width: 640px) {
   .profile {
     margin-bottom: 0;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr minmax(190px, min-content) 1fr;
     grid-template-areas:
       'avatar avatar avatar'
       'inv name edit'

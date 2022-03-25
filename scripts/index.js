@@ -26,12 +26,6 @@ function saveAndCloseForm(e) {
   closeForm();
 }
 
-function onDocumentKeyUp(event){
-  if (event.key === ESC_KEY) {
-    closeForm();
-  }
-}
-
 profileEdit.addEventListener('click', (event) => {
   openForm()
 });
