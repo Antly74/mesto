@@ -1,4 +1,4 @@
-.edit-form {
+.popup {
   position: fixed;
   z-index: 100;
   color: #000000;
@@ -10,5 +10,5 @@
   display: none;
   justify-content: center;
   align-items: center;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
 }

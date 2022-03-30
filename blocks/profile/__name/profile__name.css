@@ -6,6 +6,9 @@
   line-height: 1.14;
   align-self: end;
   grid-area: name;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 @media (max-width: 640px) {
   .profile__name {

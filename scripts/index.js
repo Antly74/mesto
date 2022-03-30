@@ -1,37 +1,29 @@
 const profileEdit = document.querySelector('.profile__edit');
-const editForm = document.querySelector('.edit-form');
-const closeButton = document.querySelector('.edit-form__close-button');
-const saveButton = document.querySelector('.edit-form__save-button');
+const popup = document.querySelector('.popup');
+const popupForm = document.querySelector('.popup__form');
+const closeButton = document.querySelector('.popup__close-button');
 
 const profileName = document.querySelector('.profile__name');
 const profileDesc = document.querySelector('.profile__desc');
 
-const nameEdit = document.querySelector('#name');
-const descEdit = document.querySelector('#desc');
+const nameEdit = document.querySelector('.popup__item_type_name');
+const descEdit = document.querySelector('.popup__item_type_desc');
 
-const ESC_KEY = "Escape";
 function openForm() {
   nameEdit.value = profileName.textContent;
   descEdit.value = profileDesc.textContent;
-  editForm.classList.add('edit-form_opened');
-  document.addEventListener('keyup', onDocumentKeyUp);
+  popup.classList.add('popup_opened');
 }
 
 function closeForm() {
-  editForm.classList.remove('edit-form_opened');
-  document.removeEventListener('keyup', onDocumentKeyUp);
+  popup.classList.remove('popup_opened');
 }
 
-function saveAndCloseForm() {
+function saveAndCloseForm(e) {
+  e.preventDefault();
   profileName.textContent = nameEdit.value;
   profileDesc.textContent = descEdit.value;
   closeForm();
-}
-
-function onDocumentKeyUp(event){
-  if (event.key === ESC_KEY) {
-    closeForm();
-  }
 }
 
 profileEdit.addEventListener('click', (event) => {
@@ -40,6 +32,4 @@ profileEdit.addEventListener('click', (event) => {
 
 closeButton.addEventListener('click', closeForm);
 
-saveButton.addEventListener('click', saveAndCloseForm);
-
-
+popupForm.addEventListener('submit', saveAndCloseForm);

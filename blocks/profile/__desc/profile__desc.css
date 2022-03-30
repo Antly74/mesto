@@ -5,12 +5,17 @@
   font-size: 18px;
   line-height: 1.22;
   grid-area: desc;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 @media (max-width: 640px) {
   .profile__desc {
     justify-self: center;
     text-align: center;
     font-size: 14px;
+    margin-top: 8px;
     margin-bottom: 30px;
   }
 }
