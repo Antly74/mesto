@@ -27,11 +27,12 @@
 
       <section class="elements">
         <article class="element">
-          <img src="./images/elements/Akteon_Tretyakov_Gallery.jpg" alt="Актеон Третьяковская галерея" class="element__image">
+          <img src="./images/elements/Zhukov_monument.jpg" alt="Памятник Жукову" class="element__image">
           <div class="element__caption">
-            <h2 class="element__caption-text">Актеон Третьяковская галерея</h2>
+            <h2 class="element__caption-text">Памятник Жукову</h2>
             <button aria-label="Лайк" type="button" class="element__button-like link"></button>
           </div>
+          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
         </article>
         <article class="element">
           <img src="./images/elements/Assumption_Cathedral.jpg" alt="Успенский собор" class="element__image">
@@ -39,6 +40,7 @@
             <h2 class="element__caption-text">Успенский собор</h2>
             <button aria-label="Лайк" type="button" class="element__button-like link"></button>
           </div>
+          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
         </article>
         <article class="element">
           <img src="./images/elements/eternal_flame.jpg" alt="Могила неизвестному солдату" class="element__image">
@@ -46,13 +48,15 @@
             <h2 class="element__caption-text">Могила неизвестному солдату</h2>
             <button aria-label="Лайк" type="button" class="element__button-like link"></button>
           </div>
+          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
         </article>
         <article class="element">
-            <img src="./images/elements/Kolomna_kremlin_wall.jpg" alt="Коломна, Кремлевская стена" class="element__image">
-            <div class="element__caption">
-              <h2 class="element__caption-text">Коломна, Кремлевская стена</h2>
-              <button aria-label="Лайк" type="button" class="element__button-like link"></button>
-            </div>
+          <img src="./images/elements/Kolomna_kremlin_wall.jpg" alt="Коломна, Кремлевская стена" class="element__image">
+          <div class="element__caption">
+            <h2 class="element__caption-text">Коломна, Кремлевская стена</h2>
+            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+          </div>
+          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
         </article>
         <article class="element">
           <img src="./images/elements/Moskva_city.jpg" alt="Москва Сити" class="element__image">
@@ -60,6 +64,7 @@
             <h2 class="element__caption-text">Москва Сити</h2>
             <button aria-label="Лайк" type="button" class="element__button-like link"></button>
           </div>
+          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
         </article>
         <article class="element">
           <img src="./images/elements/VDNH.jpg" alt="ВДНХ" class="element__image">
@@ -67,6 +72,7 @@
             <h2 class="element__caption-text">ВДНХ</h2>
             <button aria-label="Лайк" type="button" class="element__button-like link"></button>
           </div>
+          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
         </article>
       </section>
 
@@ -77,13 +83,25 @@
     </footer>
   </div>
 
-  <div class="popup">
+  <div class="popup popup_type_edit-profile">
     <div class="popup__window">
       <h2 class="popup__header">Редактировать профиль</h2>
-      <form class="popup__form" name="popupForm">
-        <input type="text" class="popup__item popup__item_type_name" id="name" name="name" required>
-        <input type="text" class="popup__item popup__item_type_desc" id="desc" name="desc" required>
+      <form class="popup__form popup__form_type_edit-profile" name="popupForm">
+        <input type="text" class="popup__item popup__item_type_name" id="name" name="name" required placeholder="Имя">
+        <input type="text" class="popup__item popup__item_type_desc" id="desc" name="desc" required placeholder="Описание">
         <button aria-label="Сохранить" type="submit" class="popup__save-button link">Сохранить</button>
+      </form>
+      <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_add-element popup_opened">
+    <div class="popup__window">
+      <h2 class="popup__header">Новое место</h2>
+      <form class="popup__form popup__form_type_add-element" name="popupForm">
+        <input type="text" class="popup__item popup__item_type_place-name" id="place-name" name="place-name" required placeholder="Название">
+        <input type="url" class="popup__item popup__item_type_place-image-url" id="place-image-url" name="place-image-url" required placeholder="Ссылка на картинку">
+        <button aria-label="Создать" type="submit" class="popup__save-button link">Создать</button>
       </form>
       <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
     </div>
