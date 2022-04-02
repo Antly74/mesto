@@ -26,54 +26,7 @@
       </section>
 
       <section class="elements">
-        <article class="element">
-          <img src="./images/elements/Zhukov_monument.jpg" alt="Памятник Жукову" class="element__image">
-          <div class="element__caption">
-            <h2 class="element__caption-text">Памятник Жукову</h2>
-            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
-          </div>
-          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
-        </article>
-        <article class="element">
-          <img src="./images/elements/Assumption_Cathedral.jpg" alt="Успенский собор" class="element__image">
-          <div class="element__caption">
-            <h2 class="element__caption-text">Успенский собор</h2>
-            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
-          </div>
-          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
-        </article>
-        <article class="element">
-          <img src="./images/elements/eternal_flame.jpg" alt="Могила неизвестному солдату" class="element__image">
-          <div class="element__caption">
-            <h2 class="element__caption-text">Могила неизвестному солдату</h2>
-            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
-          </div>
-          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
-        </article>
-        <article class="element">
-          <img src="./images/elements/Kolomna_kremlin_wall.jpg" alt="Коломна, Кремлевская стена" class="element__image">
-          <div class="element__caption">
-            <h2 class="element__caption-text">Коломна, Кремлевская стена</h2>
-            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
-          </div>
-          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
-        </article>
-        <article class="element">
-          <img src="./images/elements/Moskva_city.jpg" alt="Москва Сити" class="element__image">
-          <div class="element__caption">
-            <h2 class="element__caption-text">Москва Сити</h2>
-            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
-          </div>
-          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
-        </article>
-        <article class="element">
-          <img src="./images/elements/VDNH.jpg" alt="ВДНХ" class="element__image">
-          <div class="element__caption">
-            <h2 class="element__caption-text">ВДНХ</h2>
-            <button aria-label="Лайк" type="button" class="element__button-like link"></button>
-          </div>
-          <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
-        </article>
+
       </section>
 
     </main>
@@ -106,6 +59,27 @@
       <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
     </div>
   </div>
+
+  <div class="popup popup_type_image">
+    <div class="popup__figure-container">
+      <figure class="popup__figure">
+        <img src="./images/elements/Moskva_city.jpg" alt="Москва Сити" class="popup__image">
+        <figcaption class="popup__image-caption">Москва Сити</figcaption>
+      </figure>
+      <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
+    </div>
+  </div>
+
+  <template id="element-template">
+    <article class="element">
+      <img src="" alt="" class="element__image">
+      <div class="element__caption">
+        <h2 class="element__caption-text"></h2>
+        <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+      </div>
+      <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
+    </article>
+  </template>
 
   <script src="./scripts/index.js"></script>
 </body>
