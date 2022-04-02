@@ -42,7 +42,7 @@ function openAddElementForm() {
 
 function saveAndCloseAddElementForm(event) {
   event.preventDefault();
-  elementAdd({ name: elementNameEdit.value, link: elementImageUrlEdit.value });
+  addNewElement({ name: elementNameEdit.value, link: elementImageUrlEdit.value });
   closePopup(addElementPopup);
 }
 
@@ -87,7 +87,7 @@ const elementsContainer = document.querySelector('.elements');
 const elementTemlate    = document.querySelector('#element-template').content;
 
 // функция добавления элемента
-function elementAdd(elementData) {
+function addNewElement(elementData) {
   const elementNode         = elementTemlate.querySelector('.element').cloneNode(true);
   const elementImage        = elementNode.querySelector('.element__image');
   const elementCaptionText  = elementNode.querySelector('.element__caption-text');
@@ -120,5 +120,5 @@ function elementAdd(elementData) {
   elementsContainer.prepend(elementNode);
 }
 
-initialCards.forEach(elementAdd);
+initialCards.forEach(addNewElement);
 // ----- массив елементов END
