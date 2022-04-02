@@ -1,35 +1,54 @@
-const profileEdit = document.querySelector('.profile__edit');
-const popup = document.querySelector('.popup');
-const popupForm = document.querySelector('.popup__form');
-const closeButton = document.querySelector('.popup__close-button');
+// функции открытия/закрытия попапа
+const openPopup     = popup => { popup.classList.add('popup_opened') };
+const closePopup    = popup => { popup.classList.remove('popup_opened') };
 
-const profileName = document.querySelector('.profile__name');
-const profileDesc = document.querySelector('.profile__desc');
 
-const nameEdit = document.querySelector('.popup__item_type_name');
-const descEdit = document.querySelector('.popup__item_type_desc');
+// ----- попап редактирования профиля BEGIN
+const editProfilePopup      = document.querySelector('.popup_type_edit-profile');
+const editProfileForm       = editProfilePopup.querySelector('.popup__form');
+const profileNameEdit       = editProfileForm.querySelector('.popup__item_type_name');
+const profileDescEdit       = editProfileForm.querySelector('.popup__item_type_desc');
+// поля отображения профиля на странице
+const profileName           = document.querySelector('.profile__name');
+const profileDesc           = document.querySelector('.profile__desc');
 
-function openForm() {
-  nameEdit.value = profileName.textContent;
-  descEdit.value = profileDesc.textContent;
-  popup.classList.add('popup_opened');
+function openEditProfileForm(event) {
+  profileNameEdit.value = profileName.textContent;
+  profileDescEdit.value = profileDesc.textContent;
+  openPopup(editProfilePopup);
 }
 
-function closeForm() {
-  popup.classList.remove('popup_opened');
+function saveAndCloseEditProfileForm(event) {
+  event.preventDefault();
+  profileName.textContent = profileNameEdit.value;
+  profileDesc.textContent = profileDescEdit.value;
+  closePopup(editProfilePopup);
 }
 
-function saveAndCloseForm(e) {
-  e.preventDefault();
-  profileName.textContent = nameEdit.value;
-  profileDesc.textContent = descEdit.value;
-  closeForm();
+document.querySelector('.profile__edit').addEventListener('click', openEditProfileForm);
+editProfileForm.addEventListener('submit', saveAndCloseEditProfileForm);
+// ----- попап редактирования профиля END
+
+// ----- попап добавления елемента BEGIN
+const addElementPopup       = document.querySelector('.popup_type_add-element');
+const addElementForm        = addElementPopup.querySelector('.popup__form');
+const elementNameEdit       = addElementForm.querySelector('.popup__item_type_place-name');
+const elementImageUrlEdit   = addElementForm.querySelector('.popup__item_type_place-image-url');
+
+function openAddElementForm() {
+  openPopup(addElementPopup);
 }
 
-profileEdit.addEventListener('click', (event) => {
-  openForm()
+function saveAndCloseAddElementForm(event) {
+  event.preventDefault();
+  closePopup(addElementPopup);
+}
+
+document.querySelector('.profile__add').addEventListener('click', openAddElementForm);
+addElementForm.addEventListener('submit', saveAndCloseAddElementForm);
+// ----- попап добавления елемента END
+
+// навешиваем событие по клику на все кнопки закрытия попапов
+document.querySelectorAll('.popup__close-button').forEach(close => {
+  close.addEventListener('click', event => { closePopup(event.target.parentElement.parentElement) })
 });
-
-closeButton.addEventListener('click', closeForm);
-
-popupForm.addEventListener('submit', saveAndCloseForm);

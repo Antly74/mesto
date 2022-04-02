@@ -7,8 +7,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  display: none;
   justify-content: center;
   align-items: center;
   font-family: 'Inter', Arial, sans-serif;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  /* используется задержка для visibility, пока прозрачность отрабатывает */
+  transition: visibility 0s linear 500ms, opacity 500ms;
 }
