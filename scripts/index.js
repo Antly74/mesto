@@ -1,61 +1,20 @@
-// функции открытия/закрытия попапа
-const openPopup     = popup => { popup.classList.add('popup_opened') };
-const closePopup    = popup => { popup.classList.remove('popup_opened') };
+// попап редактирования профиля
+const popupEditProfile      = document.querySelector('.popup_type_edit-profile');
+const formEditProfile       = popupEditProfile.querySelector('.popup__form');
+const inputProfileName      = formEditProfile.querySelector('.popup__item_type_name');
+const inputProfileDesc      = formEditProfile.querySelector('.popup__item_type_desc');
 
-// ----- попап редактирования профиля BEGIN
-const editProfilePopup      = document.querySelector('.popup_type_edit-profile');
-const editProfileForm       = editProfilePopup.querySelector('.popup__form');
-const profileNameEdit       = editProfileForm.querySelector('.popup__item_type_name');
-const profileDescEdit       = editProfileForm.querySelector('.popup__item_type_desc');
 // поля отображения профиля на странице
-const profileName           = document.querySelector('.profile__name');
-const profileDesc           = document.querySelector('.profile__desc');
+const nodeProfileName       = document.querySelector('.profile__name');
+const nodeProfileDesc       = document.querySelector('.profile__desc');
 
-function openEditProfileForm(event) {
-  profileNameEdit.value = profileName.textContent;
-  profileDescEdit.value = profileDesc.textContent;
-  openPopup(editProfilePopup);
-}
+// попап добавления елемента
+const popupAddElement       = document.querySelector('.popup_type_add-element');
+const formAddElement        = popupAddElement.querySelector('.popup__form');
+const inputElementName      = formAddElement.querySelector('.popup__item_type_place-name');
+const inputElementImageUrl  = formAddElement.querySelector('.popup__item_type_place-image-url');
 
-function saveAndCloseEditProfileForm(event) {
-  event.preventDefault();
-  profileName.textContent = profileNameEdit.value;
-  profileDesc.textContent = profileDescEdit.value;
-  closePopup(editProfilePopup);
-}
-
-document.querySelector('.profile__edit').addEventListener('click', openEditProfileForm);
-editProfileForm.addEventListener('submit', saveAndCloseEditProfileForm);
-// ----- попап редактирования профиля END
-
-// ----- попап добавления елемента BEGIN
-const addElementPopup       = document.querySelector('.popup_type_add-element');
-const addElementForm        = addElementPopup.querySelector('.popup__form');
-const elementNameEdit       = addElementForm.querySelector('.popup__item_type_place-name');
-const elementImageUrlEdit   = addElementForm.querySelector('.popup__item_type_place-image-url');
-
-function openAddElementForm() {
-  elementNameEdit.value = null;
-  elementImageUrlEdit.value = null;
-  openPopup(addElementPopup);
-}
-
-function saveAndCloseAddElementForm(event) {
-  event.preventDefault();
-  addNewElement({ name: elementNameEdit.value, link: elementImageUrlEdit.value });
-  closePopup(addElementPopup);
-}
-
-document.querySelector('.profile__add').addEventListener('click', openAddElementForm);
-addElementForm.addEventListener('submit', saveAndCloseAddElementForm);
-// ----- попап добавления елемента END
-
-// навешиваем событие по клику на все кнопки закрытия попапов
-document.querySelectorAll('.popup__close-button').forEach(close => {
-  close.addEventListener('click', event => { closePopup(event.target.parentElement.parentElement) })
-});
-
-// ----- массив елементов BEGIN
+// массив елементов для инициализации
 const initialCards = [
   {
     name: 'Памятник Жукову',
@@ -83,17 +42,61 @@ const initialCards = [
   }
 ];
 
-const elementsContainer = document.querySelector('.elements');
-const elementTemlate    = document.querySelector('#element-template').content;
+// переменные секции элементы
+const containerElements = document.querySelector('.elements');
+const templateElement   = document.querySelector('#element-template').content;
+const popupFigure       = document.querySelector('.popup_type_image');
+const nodeFigureImage   = popupFigure.querySelector('.popup__image');
+const nodeFigureCaption = popupFigure.querySelector('.popup__image-caption');
 
-// функция добавления элемента
+// ФУНКЦИИ ---------------------------
+
+// функции открытия/закрытия попапа
+const openPopup     = popup => { popup.classList.add('popup_opened') };
+const closePopup    = popup => { popup.classList.remove('popup_opened') };
+
+// обработчик открытия попапа редактирования профиля
+function openFormEditProfile(event) {
+  inputProfileName.value = nodeProfileName.textContent;
+  inputProfileDesc.value = nodeProfileDesc.textContent;
+  openPopup(popupEditProfile);
+}
+
+// обработчик кнопки сохранить попапа редактирования профиля
+function saveAndCloseFormEditProfile(event) {
+  event.preventDefault();
+  nodeProfileName.textContent = inputProfileName.value;
+  nodeProfileDesc.textContent = inputProfileDesc.value;
+  closePopup(popupEditProfile);
+}
+
+// обработчик открытия попапа добавления элемента
+function openFormAddElement() {
+  inputElementName.value = '';
+  inputElementImageUrl.value = null;
+  openPopup(popupAddElement);
+}
+
+// обработчик закрытия с сохранением попапа добавления элемента
+function saveAndCloseFormAddElement(event) {
+  event.preventDefault();
+  renderElement(addNewElement({ name: inputElementName.value, link: inputElementImageUrl.value }));
+  closePopup(popupAddElement);
+}
+
+// обработчик открытия попапа с картинкой
+function openPopupImage (event) {
+  nodeFigureImage.src = event.target.src;
+  nodeFigureImage.alt = event.target.alt;
+  nodeFigureCaption.textContent = event.target.alt;
+  openPopup(popupFigure);
+}
+
+// добавление элемента
 function addNewElement(elementData) {
-  const elementNode         = elementTemlate.querySelector('.element').cloneNode(true);
-  const elementImage        = elementNode.querySelector('.element__image');
-  const elementCaptionText  = elementNode.querySelector('.element__caption-text');
-  const figurePopup         = document.querySelector('.popup_type_image');
-  const figureImage         = figurePopup.querySelector('.popup__image');
-  const figureCaption       = figurePopup.querySelector('.popup__image-caption');
+  const nodeElement         = templateElement.querySelector('.element').cloneNode(true);
+  const elementImage        = nodeElement.querySelector('.element__image');
+  const elementCaptionText  = nodeElement.querySelector('.element__caption-text');
 
   // заполняем данные
   elementImage.src = elementData.link;
@@ -102,23 +105,38 @@ function addNewElement(elementData) {
 
   // добавляем события
   // открытие попапа
-  elementImage.addEventListener('click', event => {
-    figureImage.src = elementData.link;
-    figureImage.alt = elementData.name;
-    figureCaption.textContent = elementData.name;
-    openPopup(figurePopup);
-  });
+  elementImage.addEventListener('click', openPopupImage);
   // лайк
-  elementNode.querySelector('.element__button-like').addEventListener('click', event => {
+  nodeElement.querySelector('.element__button-like').addEventListener('click', event => {
     event.target.classList.toggle('element__button-like_active');
   });
   // удаление
-  elementNode.querySelector('.element__button-delete').addEventListener('click', () => {
-    elementNode.remove()
+  nodeElement.querySelector('.element__button-delete').addEventListener('click', () => {
+    nodeElement.remove()
   });
 
-  elementsContainer.prepend(elementNode);
+  return nodeElement;
 }
 
-initialCards.forEach(addNewElement);
-// ----- массив елементов END
+// добавление элемента в DOM
+function renderElement(nodeElement) {
+  containerElements.prepend(nodeElement);
+}
+
+// ОБРАБОТЧИКИ ------------------
+
+// определяем события попапа редактирования профиля
+document.querySelector('.profile__edit').addEventListener('click', openFormEditProfile);
+formEditProfile.addEventListener('submit', saveAndCloseFormEditProfile);
+
+// определяем события попапа добавления элемента
+document.querySelector('.profile__add').addEventListener('click', openFormAddElement);
+formAddElement.addEventListener('submit', saveAndCloseFormAddElement);
+
+// навешиваем событие по клику на все кнопки закрытия попапов
+document.querySelectorAll('.popup__close-button').forEach(close => {
+  close.addEventListener('click', event => { closePopup(event.target.closest('.popup')) })
+});
+
+// инициализируем элементы ------------------
+initialCards.map(addNewElement).forEach(renderElement);
