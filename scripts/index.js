@@ -73,7 +73,7 @@ function saveAndCloseFormEditProfile(event) {
 // обработчик открытия попапа добавления элемента
 function openFormAddElement() {
   inputElementName.value = '';
-  inputElementImageUrl.value = null;
+  inputElementImageUrl.value = '';
   openPopup(popupAddElement);
 }
 
