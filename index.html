@@ -39,7 +39,7 @@
   <div class="popup popup_type_edit-profile">
     <div class="popup__window">
       <h2 class="popup__header">Редактировать профиль</h2>
-      <form class="popup__form" name="profileEditForm">
+      <form class="popup__form" name="profileEditForm" novalidate>
         <input type="text" class="popup__input" id="profileName" name="profileName" placeholder="Имя" minlength="2" maxlength="40" required>
         <span class="popup__input-error" id="profileName-error"></span>
         <input type="text" class="popup__input" id="profileDesc" name="profileDesc" placeholder="Описание" minlength="2" maxlength="200" required>
@@ -53,7 +53,7 @@
   <div class="popup popup_type_add-element">
     <div class="popup__window">
       <h2 class="popup__header">Новое место</h2>
-      <form class="popup__form" name="elementAddForm">
+      <form class="popup__form" name="elementAddForm" novalidate>
         <input type="text" class="popup__input" id="elementName" name="elementName" placeholder="Название" minlength="2" maxlength="30" required>
         <span class="popup__input-error" id="elementName-error"></span>
         <input type="url" class="popup__input" id="elementImageUrl" name="elementImageUrl" placeholder="Ссылка на картинку" required>
