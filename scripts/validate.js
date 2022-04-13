@@ -23,9 +23,6 @@ const setInputValidStatus = (input, inputErrorClass, errorClass, valid) => {
   }
 }
 
-// предопределяем переменную для сохранения функции инициализации формы при открытии попапа
-let setFormValidStatusOnOpenPopup;
-
 // меняем кнопку сохранить в зависимости от valid-состояния елементов формы
 const setFormValidStatus = (form, inactiveButtonClass, submitButtonSelector) => {
   const saveButton = form.querySelector(submitButtonSelector);
@@ -50,8 +47,8 @@ const enableValidation = (config) => {
     });
   });
 
-  // инициализируем функцию для открытия попапа
-  setFormValidStatusOnOpenPopup = (popup) => {
+  // возвращаем функцию инициализации формы при открытии попапа
+  return (popup) => {
     const form = popup.querySelector(config.formSelector);
     // у попапа может не быть формы, поэтому проверяем наличие
     if (form) {
@@ -68,4 +65,5 @@ const enableValidation = (config) => {
 }
 
 // инициализируем валидатор с настройками
-enableValidation(validationConfig);
+// функция возвращает подготовленную функцию инициализации формы при открытии попапа
+const setFormValidStatusOnOpenPopup = enableValidation(validationConfig);

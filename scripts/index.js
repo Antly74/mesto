@@ -57,7 +57,6 @@ const ESC_KEY = 'Escape';
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', onDocumentKeyUp);
-  setFormValidStatusOnOpenPopup(popup);
 }
 
 const closePopup = (popup) => {
@@ -77,6 +76,7 @@ function openFormEditProfile(event) {
   profileNameInput.value = profileNameNode.textContent;
   profileDescInput.value = profileDescNode.textContent;
   openPopup(popupEditProfile);
+  setFormValidStatusOnOpenPopup(popupEditProfile);
 }
 
 // обработчик кнопки сохранить попапа редактирования профиля
@@ -89,9 +89,9 @@ function saveAndCloseFormEditProfile(event) {
 
 // обработчик открытия попапа добавления элемента
 function openFormAddElement() {
-  elementNameInput.value = '';
-  elementImageUrlInput.value = '';
+  elementAddForm.reset();
   openPopup(popupAddElement);
+  setFormValidStatusOnOpenPopup(popupAddElement);
 }
 
 // обработчик закрытия с сохранением попапа добавления элемента
