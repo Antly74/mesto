@@ -4,31 +4,31 @@ import FormValidator from './FormValidator.js';
 // объект для инициализации валидации
 const validationConfig =
   {
-    formSelector:           '.popup__form',
-    inputSelector:          'popup__input',
-    submitButtonSelector:   '.popup__save-button',
-    inactiveButtonClass:    'popup__save-button_disabled',
-    inputErrorClass:        'popup__input_type_error',
-    errorClass:             'popup__input-error_visible'
+    formSelector: '.popup__form',
+    inputSelector: 'popup__input',
+    submitButtonSelector: '.popup__save-button',
+    inactiveButtonClass:'popup__save-button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_visible'
   };
 
 // попап редактирования профиля
-const popupEditProfile      = document.querySelector('.popup_type_edit-profile');
-const profileEditForm       = document.forms.profileEditForm;
-const profileNameInput      = profileEditForm.elements.profileName;
-const profileDescInput      = profileEditForm.elements.profileDesc;
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const profileEditForm = document.forms.profileEditForm;
+const profileNameInput = profileEditForm.elements.profileName;
+const profileDescInput = profileEditForm.elements.profileDesc;
 const profileEditFormValidator = new FormValidator(validationConfig, profileEditForm);
 
 // поля отображения профиля на странице
-const profileNameNode       = document.querySelector('.profile__name');
-const profileDescNode       = document.querySelector('.profile__desc');
+const profileNameNode = document.querySelector('.profile__name');
+const profileDescNode = document.querySelector('.profile__desc');
 
 // попап добавления елемента
-const popupAddElement       = document.querySelector('.popup_type_add-element');
-const elementAddForm        = document.forms.elementAddForm;
-const elementNameInput      = elementAddForm.elements.elementName;
-const elementImageUrlInput  = elementAddForm.elements.elementImageUrl;
-const elementAddFormValidator = new FormValidator(validationConfig, elementAddForm);
+const popupAddCard = document.querySelector('.popup_type_add-element');
+const cardAddForm = document.forms.cardAddForm;
+const cardNameInput = cardAddForm.elements.elementName;
+const cardImageUrlInput = cardAddForm.elements.elementImageUrl;
+const cardAddFormValidator = new FormValidator(validationConfig, cardAddForm);
 
 // массив елементов для инициализации
 const initialCards = [
@@ -59,7 +59,7 @@ const initialCards = [
 ];
 
 // переменные секции элементы
-const containerElements = document.querySelector('.elements');
+const cardList = document.querySelector('.elements');
 
 const ESC_KEY = 'Escape';
 
@@ -101,16 +101,16 @@ function saveAndCloseFormEditProfile(event) {
 
 // обработчик открытия попапа добавления элемента
 function openFormAddElement() {
-  elementAddForm.reset();
-  openPopup(popupAddElement);
-  elementAddFormValidator.initForm();
+  cardAddForm.reset();
+  openPopup(popupAddCard);
+  cardAddFormValidator.initForm();
 }
 
 // обработчик закрытия с сохранением попапа добавления элемента
 function saveAndCloseFormAddElement(event) {
   event.preventDefault();
-  renderElement(addNewElement({ name: elementNameInput.value, link: elementImageUrlInput.value }));
-  closePopup(popupAddElement);
+  renderElement(addNewElement({ name: cardNameInput.value, link: cardImageUrlInput.value }));
+  closePopup(popupAddCard);
 }
 
 // добавление элемента
@@ -121,7 +121,7 @@ function addNewElement(elementData) {
 
 // добавление элемента в DOM
 function renderElement(nodeElement) {
-  containerElements.prepend(nodeElement)
+  cardList.prepend(nodeElement)
 }
 
 // ОБРАБОТЧИКИ ------------------
@@ -132,11 +132,11 @@ profileEditForm.addEventListener('submit', saveAndCloseFormEditProfile);
 
 // определяем события попапа добавления элемента
 document.querySelector('.profile__add').addEventListener('click', openFormAddElement);
-elementAddForm.addEventListener('submit', saveAndCloseFormAddElement);
+cardAddForm.addEventListener('submit', saveAndCloseFormAddElement);
 
 // навешиваем событие по клику на все кнопки закрытия попапов
-document.querySelectorAll('.popup__close-button').forEach(close => {
-  close.addEventListener('click', event => { closePopup(event.target.closest('.popup')) })
+document.querySelectorAll('.popup__close-button').forEach(closeBtn => {
+  closeBtn.addEventListener('click', event => closePopup(event.target.closest('.popup')))
 });
 // навешиваем событие по клику на оверлей попапов
 document.querySelectorAll('.popup').forEach(popup => {
@@ -147,4 +147,4 @@ document.querySelectorAll('.popup').forEach(popup => {
 initialCards.map(addNewElement).forEach(renderElement);
 
 profileEditFormValidator.enableValidation();
-elementAddFormValidator.enableValidation();
+cardAddFormValidator.enableValidation();

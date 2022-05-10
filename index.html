@@ -53,7 +53,7 @@
   <div class="popup popup_type_add-element">
     <div class="popup__window">
       <h2 class="popup__header">Новое место</h2>
-      <form class="popup__form" name="elementAddForm" novalidate>
+      <form class="popup__form" name="cardAddForm" novalidate>
         <input type="text" class="popup__input" id="elementName" name="elementName" placeholder="Название" minlength="2" maxlength="30" required>
         <span class="popup__input-error" id="elementName-error"></span>
         <input type="url" class="popup__input" id="elementImageUrl" name="elementImageUrl" placeholder="Ссылка на картинку" required>
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-  <template id="element-template">
+  <template class="element-template">
     <article class="element">
       <img src="need-redefine" alt="" class="element__image">
       <div class="element__caption">
