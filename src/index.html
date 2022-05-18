@@ -39,10 +39,10 @@
     <div class="popup__window">
       <h2 class="popup__header">Редактировать профиль</h2>
       <form class="popup__form" name="profileEditForm" novalidate>
-        <input type="text" class="popup__input" id="name" name="name" placeholder="Имя" minlength="2" maxlength="40" required>
-        <span class="popup__input-error" id="name-error"></span>
-        <input type="text" class="popup__input" id="desc" name="desc" placeholder="Описание" minlength="2" maxlength="200" required>
-        <span class="popup__input-error" id="desc-error"></span>
+        <input type="text" class="popup__input" id="profileName" name="profileName" placeholder="Имя" minlength="2" maxlength="40" required>
+        <span class="popup__input-error" id="profileName-error"></span>
+        <input type="text" class="popup__input" id="profileDesc" name="profileDesc" placeholder="Описание" minlength="2" maxlength="200" required>
+        <span class="popup__input-error" id="profileDesc-error"></span>
         <button aria-label="Сохранить" type="submit" class="popup__save-button link" name="submit">Сохранить</button>
       </form>
       <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
@@ -53,10 +53,10 @@
     <div class="popup__window">
       <h2 class="popup__header">Новое место</h2>
       <form class="popup__form" name="cardAddForm" novalidate>
-        <input type="text" class="popup__input" id="name" name="name" placeholder="Название" minlength="2" maxlength="30" required>
-        <span class="popup__input-error" id="name-error"></span>
-        <input type="url" class="popup__input" id="link" name="link" placeholder="Ссылка на картинку" required>
-        <span class="popup__input-error" id="link-error"></span>
+        <input type="text" class="popup__input" id="elementName" name="elementName" placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="popup__input-error" id="elementName-error"></span>
+        <input type="url" class="popup__input" id="elementLink" name="elementLink" placeholder="Ссылка на картинку" required>
+        <span class="popup__input-error" id="elementLink-error"></span>
         <button aria-label="Создать" type="submit" class="popup__save-button link" name="submit" disabled>Создать</button>
       </form>
       <button aria-label="Отменить" type="button" class="popup__close-button link"></button>

@@ -8,28 +8,28 @@ import VDNH from '../images/elements/VDNH.jpg';
 // массив елементов для инициализации
 const initialCards = [
   {
-    name: 'Памятник Жукову',
-    link: Zhukov_monument
+    elementName: 'Памятник Жукову',
+    elementLink: Zhukov_monument
   },
   {
-    name: 'Успенский собор',
-    link: Assumption_Cathedral
+    elementName: 'Успенский собор',
+    elementLink: Assumption_Cathedral
   },
   {
-    name: 'Могила неизвестному солдату',
-    link: eternal_flame
+    elementName: 'Могила неизвестному солдату',
+    elementLink: eternal_flame
   },
   {
-    name: 'Коломна, Кремлевская стена',
-    link: Kolomna_kremlin_wall
+    elementName: 'Коломна, Кремлевская стена',
+    elementLink: Kolomna_kremlin_wall
   },
   {
-    name: 'Москва Сити',
-    link: Moskva_city
+    elementName: 'Москва Сити',
+    elementLink: Moskva_city
   },
   {
-    name: 'ВДНХ',
-    link: VDNH
+    elementName: 'ВДНХ',
+    elementLink: VDNH
   }
 ];
 

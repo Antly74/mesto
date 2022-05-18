@@ -12,8 +12,8 @@ const newCard = (elementData) => {
   const card = new Card(
     elementData,
     'element-template',
-    (link, name) => {
-      popupWithImage.open(link, name);
+    (elementLink, elementName) => {
+      popupWithImage.open(elementLink, elementName);
     }
   );
   return card;
@@ -44,8 +44,8 @@ const popupEditProfile = new PopupWithForm (
     popup.setInputsValue(userInfo.getUserInfo());
     profileEditFormValidator.initForm();
   },
-  ({ name, desc }, popup) => {
-    userInfo.setUserInfo(name, desc);
+  ({ profileName, profileDesc }, popup) => {
+    userInfo.setUserInfo(profileName, profileDesc);
     popup.close();
   }
 );
@@ -59,8 +59,8 @@ const popupAddCard = new PopupWithForm (
   () => {
     cardAddFormValidator.initForm();
   },
-  ({ name, link }, popup) => {
-    section.addItem(newCard({ name, link }).generate());
+  ({ elementName, elementLink }, popup) => {
+    section.addItem(newCard({ elementName, elementLink }).generate());
     popup.close();
   }
 );
