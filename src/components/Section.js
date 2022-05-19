@@ -7,8 +7,7 @@ export default class Section {
 
   renderAll() {
     this._items
-      .map(elementData => this._renderer(elementData))
-      .forEach(card => this.addItem(card.generate()));
+      .forEach(elementData => this._renderer(elementData));
   }
 
   addItem(element) {

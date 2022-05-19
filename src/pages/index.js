@@ -8,7 +8,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 
-const newCard = (elementData) => {
+const createCard = (elementData) => {
   const card = new Card(
     elementData,
     'element-template',
@@ -16,7 +16,7 @@ const newCard = (elementData) => {
       popupWithImage.open(elementLink, elementName);
     }
   );
-  return card;
+  return card.generate();
 }
 
 // попап отображения картинки
@@ -26,7 +26,7 @@ const popupWithImage = new PopupWithImage('.popup_type_image');
 const section = new Section(
   {
     items: initialCards,
-    renderer: elementData => newCard(elementData)
+    renderer: elementData => section.addItem(createCard(elementData))
   },
   '.elements'
 );
@@ -60,7 +60,7 @@ const popupAddCard = new PopupWithForm (
     cardAddFormValidator.initForm();
   },
   ({ elementName, elementLink }, popup) => {
-    section.addItem(newCard({ elementName, elementLink }).generate());
+    section.addItem(createCard({ elementName, elementLink }));
     popup.close();
   }
 );
