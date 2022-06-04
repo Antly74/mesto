@@ -50,7 +50,7 @@ const popupEditProfile = new PopupWithForm (
   }
 );
 
-// попап добавления елемента
+// попап добавления элемента
 const cardAddForm = document.forms.cardAddForm;
 const cardAddFormValidator = new FormValidator(validationConfig, cardAddForm);
 const popupAddCard = new PopupWithForm (
