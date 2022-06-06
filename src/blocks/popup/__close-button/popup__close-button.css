@@ -4,7 +4,7 @@
   border: none;
   background-color: transparent;
   position: absolute;
-  top: -26px;
+  top: -44px;
   right: -46px;
   cursor: pointer;
 }
@@ -17,12 +17,12 @@
   background-color: white;
   position: absolute;
   transform: rotate(45deg);
-  top: 0px;
+  top: 18px;
   left: 0px;
 }
 .popup__close-button::after {
   transform: rotate(-45deg);
-  top: 0px;
+  top: 18px;
   left: 0px;
 }
 .popup__close-button:hover {
@@ -31,12 +31,13 @@
 
 @media (max-width: 640px) {
   .popup__close-button {
-    top: -28px;
-    right: -18px;
+    top: -46px;
+    right: -11px;
   }
   .popup__close-button::before,
   .popup__close-button::after {
     width: 23px;
     border: solid 1.3px white;
+    left: 7px;
   }
 }

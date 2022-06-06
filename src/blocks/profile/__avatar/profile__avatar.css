@@ -5,6 +5,12 @@
   grid-area: avatar;
   margin-right: 30px;
 }
+
+.profile__avatar:hover {
+  opacity: 0.2;
+  cursor: url("../../../images/EditAvatar.svg") 0 25, pointer;
+}
+
 @media (max-width: 640px) {
   .profile__avatar {
     justify-self: center;

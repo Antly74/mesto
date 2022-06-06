@@ -4,6 +4,7 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, { formSelector, inputSelector }, handleOpenForm, handleSubmitForm) {
     super(popupSelector);
     this._form = this._popup.querySelector(formSelector);
+    this._submitTextContent = this._form.submit.textContent;
     this._inputSelector = inputSelector;
     this._handleOpenForm = handleOpenForm;
     this._handleSubmitForm = handleSubmitForm;
@@ -43,5 +44,13 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     setTimeout(() => this._form.reset(), 500); // при плавном закрытии необходимо, чтобы reset выполнился после полного исчезновения формы
+  }
+
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._form.submit.textContent = 'Сохранение...';
+    } else {
+      this._form.submit.textContent = this._submitTextContent;
+    }
   }
 }

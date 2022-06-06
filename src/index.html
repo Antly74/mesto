@@ -17,9 +17,9 @@
     <main class="content">
 
       <section class="profile">
-        <img src="<%=require('./images/Okorokov.jpg')%>" alt="Аватар" class="profile__avatar">
-        <h1 class="profile__name">Анатолий Око</h1>
-        <p class="profile__desc">Путешественник по Москве</p>
+        <img src="null" alt="Аватар" class="profile__avatar link">
+        <h1 class="profile__name"> </h1>
+        <p class="profile__desc"> </p>
         <button aria-label="Редактировать" type="button" class="profile__edit link"></button>
         <button aria-label="Добавить" type="button" class="profile__add link"></button>
       </section>
@@ -49,6 +49,20 @@
     </div>
   </div>
 
+  <!-- Попап обновления аватара -->
+  <div class="popup popup_type_update-avatar">
+    <div class="popup__window">
+      <h2 class="popup__header">Обновить аватар</h2>
+      <form class="popup__form" name="avatarUpdateForm" novalidate>
+        <input type="url" class="popup__input" id="avatar" name="avatar" placeholder="Ссылка на картинку" required>
+        <span class="popup__input-error" id="avatar-error"></span>
+        <button aria-label="Сохранить" type="submit" class="popup__save-button link" name="submit">Сохранить</button>
+      </form>
+      <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
+    </div>
+  </div>
+
+  <!-- Попап добавления елемента -->
   <div class="popup popup_type_add-element">
     <div class="popup__window">
       <h2 class="popup__header">Новое место</h2>
@@ -63,6 +77,7 @@
     </div>
   </div>
 
+  <!-- Попап полноэкранной картинки -->
   <div class="popup popup_type_image">
     <div class="popup__figure-container">
       <figure class="popup__figure">
@@ -73,12 +88,27 @@
     </div>
   </div>
 
+  <!-- Попап подтверждения -->
+  <div class="popup popup_type_confirm">
+    <div class="popup__window">
+      <h2 class="popup__header">Вы уверены?</h2>
+      <form class="popup__form" name="confirmForm" novalidate>
+        <input type="hidden" class="popup__input" id="cardId" name="cardId" placeholder="Ид карточки">
+        <button aria-label="Сохранить" type="submit" class="popup__save-button link" name="submit">Да</button>
+      </form>
+      <button aria-label="Отменить" type="button" class="popup__close-button link"></button>
+    </div>
+  </div>
+
   <template class="element-template">
     <article class="element">
       <img src="need-redefine" alt="" class="element__image">
       <div class="element__caption">
         <h2 class="element__caption-text"></h2>
-        <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+        <div class="element__like-block">
+          <button aria-label="Лайк" type="button" class="element__button-like link"></button>
+          <p class="element__like-count">0</p>
+        </div>
       </div>
       <button aria-label="Удалить" type="button" class="element__button-delete link"></button>
     </article>
