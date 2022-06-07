@@ -46,9 +46,9 @@ export default class PopupWithForm extends Popup {
     setTimeout(() => this._form.reset(), 500); // при плавном закрытии необходимо, чтобы reset выполнился после полного исчезновения формы
   }
 
-  renderLoading(isLoading) {
+  renderLoading(isLoading, textLoading = 'Сохранение...') {
     if (isLoading) {
-      this._form.submit.textContent = 'Сохранение...';
+      this._form.submit.textContent = textLoading;
     } else {
       this._form.submit.textContent = this._submitTextContent;
     }

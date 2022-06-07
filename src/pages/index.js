@@ -3,15 +3,23 @@ import './index.css';
 import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import { validationConfig } from '../components/constants.js';
+import { validationConfig, popupConfig } from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 
+// const api = new Api({
+//   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
+//   authorization: 'ea06fae9-cbb3-4f2c-858d-1af4a992ff90'
+// });
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
-  authorization: 'ea06fae9-cbb3-4f2c-858d-1af4a992ff90'
+  headers: {
+    authorization: 'ea06fae9-cbb3-4f2c-858d-1af4a992ff90',
+    'Content-Type': 'application/json'
+  }
 });
 
 // объект для отображения профиля
@@ -31,7 +39,8 @@ const createCard = (elementData) => {
       },
       handleCardDelete: (cardId) => {
         popupConfirm.setInputsValue({cardId});
-        popupConfirm.card = card;
+        popupConfirm.card = card; // смущает данное решение: не придумал, как передать карточку в .then промиса по-другому.
+        // возможно, стоит сделать дочерний класс extends PopupWithForm с методами setCard / getCard
         popupConfirm.open();
       },
       handleCardLike: (cardId, isLiked) => {
@@ -61,7 +70,7 @@ const profileEditForm = document.forms.profileEditForm;
 const profileEditFormValidator = new FormValidator(validationConfig, profileEditForm);
 const popupEditProfile = new PopupWithForm (
   '.popup_type_edit-profile',
-  validationConfig,
+  popupConfig,
   (popup) => {
     popup.setInputsValue(userInfo.getUserInfo());
     profileEditFormValidator.initForm();
@@ -71,10 +80,10 @@ const popupEditProfile = new PopupWithForm (
     api.patchUserInfo({name: profileName, about: profileDesc})
       .then(info => {
         userInfo.setUserInfo(info);
+        popup.close();
       })
       .catch(err => console.log(err))
       .finally(() => {
-        popup.close();
         popup.renderLoading(false);
       });
   }
@@ -85,19 +94,19 @@ const cardAddForm = document.forms.cardAddForm;
 const cardAddFormValidator = new FormValidator(validationConfig, cardAddForm);
 const popupAddCard = new PopupWithForm (
   '.popup_type_add-element',
-  validationConfig,
+  popupConfig,
   () => {
     cardAddFormValidator.initForm();
   },
   ({ elementName, elementLink }, popup) => {
-    popup.renderLoading(true);
+    popup.renderLoading(true, 'Создание...');
     api.postCard({name: elementName, link: elementLink})
       .then(info => {
         section.addItem(createCard(info));
+        popup.close();
       })
       .catch(err => console.log(err))
       .finally(() => {
-        popup.close();
         popup.renderLoading(false);
       });
   }
@@ -108,7 +117,7 @@ const avatarUpdateForm = document.forms.avatarUpdateForm;
 const avatarUpdateFormValidator = new FormValidator(validationConfig, avatarUpdateForm);
 const popupAvatarUpdate = new PopupWithForm (
   '.popup_type_update-avatar',
-  validationConfig,
+  popupConfig,
   () => {
     avatarUpdateFormValidator.initForm();
   },
@@ -116,11 +125,11 @@ const popupAvatarUpdate = new PopupWithForm (
     popup.renderLoading(true);
     api.patchAvatar(avatar)
       .then(info => {
-        userInfo.setAvatar(info.avatar);
+        userInfo.setUserInfo(info);
+        popup.close();
       })
       .catch(err => console.log(err))
       .finally(() => {
-        popup.close();
         popup.renderLoading(false);
       });
   }
@@ -128,17 +137,17 @@ const popupAvatarUpdate = new PopupWithForm (
 
 const popupConfirm = new PopupWithForm (
   '.popup_type_confirm',
-  validationConfig,
+  popupConfig,
   () => {},
   ({cardId}, popup) => {
-    popup.renderLoading(true);
+    popup.renderLoading(true, 'Удаление...');
     api.deleteCard(cardId)
       .then(() => {
         popup.card.delete();
+        popup.close();
       })
       .catch(err => console.log(err))
       .finally(() => {
-        popup.close();
         popup.renderLoading(false);
       });
   }
@@ -163,13 +172,12 @@ profileEditFormValidator.enableValidation();
 cardAddFormValidator.enableValidation();
 avatarUpdateFormValidator.enableValidation();
 
-api.getUserInfo()
-  .then(info => {
+Promise.all([
+  api.getUserInfo(),
+  api.getInitialCards()
+])
+  .then(([info, initialCards]) => {
     userInfo.setUserInfo(info);
-    userInfo.setAvatar(info.avatar);
-    return api.getInitialCards();
-  })
-  .then(initialCards => {
     section.renderAll(initialCards);
   })
   .catch(err => console.log(err));

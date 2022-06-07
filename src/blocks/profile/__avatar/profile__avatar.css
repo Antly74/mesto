@@ -4,6 +4,7 @@
   border-radius: 100%;
   grid-area: avatar;
   margin-right: 30px;
+  object-fit: cover;
 }
 
 .profile__avatar:hover {

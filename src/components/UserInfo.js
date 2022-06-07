@@ -16,10 +16,7 @@ export default class UserInfo {
     this._profileNameNode.textContent = info.name;
     this._profileDescNode.textContent = info.about;
     this._me = info._id;
-  }
-
-  setAvatar(avatar) {
-    this._profileAvatarNode.src = avatar;
+    this._profileAvatarNode.src = info.avatar;
   }
 
   getMe() {

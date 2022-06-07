@@ -74,7 +74,7 @@ export default class Card {
 
   setLikes(elementData) {
     this._likesCount = elementData.likes.length;
-    this._isLiked = elementData.likes.find(el => el._id === this._me, this) != undefined;
+    this._isLiked = Boolean(elementData.likes.find(el => el._id === this._me, this));
   }
 
 }

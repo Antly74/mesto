@@ -1,16 +1,14 @@
 export default class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
-    this._headers = new Headers();
-    this._headers.append('authorization', options.authorization);
-    this._headers.append('Content-Type', 'application/json');
+    this._headers = options.headers;
   }
 
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject('Что-то пошло не так');
+    return Promise.reject(`Что-то пошло не так. Ошибка: ${res.status}`);
   }
 
   getInitialCards() {
