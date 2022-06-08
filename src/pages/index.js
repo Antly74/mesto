@@ -6,6 +6,7 @@ import FormValidator from '../components/FormValidator.js';
 import { validationConfig, popupConfig } from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 
@@ -37,11 +38,20 @@ const createCard = (elementData) => {
     { handleCardClick: (elementLink, elementName) => {
         popupWithImage.open(elementLink, elementName);
       },
-      handleCardDelete: (cardId) => {
-        popupConfirm.setInputsValue({cardId});
-        popupConfirm.card = card; // смущает данное решение: не придумал, как передать карточку в .then промиса по-другому.
-        // возможно, стоит сделать дочерний класс extends PopupWithForm с методами setCard / getCard
-        popupConfirm.open();
+      handleCardDelete: () => {
+        popupWithConfirmation.setHandleSubmitForm(popup => {
+          popup.renderLoading(true);
+          api.deleteCard(card.getId())
+            .then(() => {
+              card.delete();
+              popup.close();
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+              popup.renderLoading(false);
+            });
+        });
+        popupWithConfirmation.open();
       },
       handleCardLike: (cardId, isLiked) => {
         api.toggleLikes(cardId, isLiked)
@@ -135,22 +145,9 @@ const popupAvatarUpdate = new PopupWithForm (
   }
 );
 
-const popupConfirm = new PopupWithForm (
+const popupWithConfirmation = new PopupWithConfirmation (
   '.popup_type_confirm',
-  popupConfig,
-  () => {},
-  ({cardId}, popup) => {
-    popup.renderLoading(true, 'Удаление...');
-    api.deleteCard(cardId)
-      .then(() => {
-        popup.card.delete();
-        popup.close();
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        popup.renderLoading(false);
-      });
-  }
+  popupConfig
 );
 
 // ОБРАБОТЧИКИ ------------------
@@ -166,7 +163,7 @@ popupWithImage.setEventListeners();
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupAvatarUpdate.setEventListeners();
-popupConfirm.setEventListeners();
+popupWithConfirmation.setEventListeners();
 
 profileEditFormValidator.enableValidation();
 cardAddFormValidator.enableValidation();

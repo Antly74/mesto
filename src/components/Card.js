@@ -77,4 +77,8 @@ export default class Card {
     this._isLiked = Boolean(elementData.likes.find(el => el._id === this._me, this));
   }
 
+  getId() {
+    return this._id;
+  }
+
 }
